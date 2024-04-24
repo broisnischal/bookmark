@@ -99,6 +99,20 @@
           "alt": "refresh",
           "when": "view == favourites"
         }
+      ],
+      "explorer/context": [
+        {
+          "command": "bookmark.removeBookmark"
+        },
+        {
+          "command": "bookmark.favourites"
+        }
+      ],
+      "view/item/context": [
+        {
+          "when": "view == bookmark",
+          "command": "bookmark.deletePin"
+        }
       ]
     },
     "views": {
@@ -106,7 +120,8 @@
         {
           "id": "bookmarks",
           "name": "Bookmarks",
-          "icon": "$(heart)"
+          "icon": "$(heart)",
+          "contextualTitle": "Pinit pins"
         }
       ],
       "bookmarks": [

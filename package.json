@@ -12,12 +12,116 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
+    "viewsWelcome": [
+      {
+        "message": "Hello World",
+        "view": "favourites",
+        "contents": "Add frequently used files and folders to favourite Bin. \n[Add Items](command:bookmark.addBookmark)"
+      }
+    ],
     "commands": [
       {
         "command": "bookmark.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "bookmark.addBookmark",
+        "title": "Add Bookmark"
+      },
+      {
+        "command": "bookmark.addWorkspaceItem",
+        "title": "Add Workspace Item"
+      },
+      {
+        "command": "bookmark.refreshEntry",
+        "title": "Refresh",
+        "icon": {
+          "light": "./assets/Refresh.svg",
+          "dark": "./assets/Refresh.svg"
+        }
+      },
+      {
+        "command": "bookmark.addFiles",
+        "title": "Add Files",
+        "icon": {
+          "light": "./assets/Refresh.svg",
+          "dark": "./assets/Refresh.svg"
+        }
+      },
+      {
+        "command": "bookmark.favourites",
+        "title": "Add Files",
+        "icon": {
+          "light": "./assets/Refresh.svg",
+          "dark": "./assets/Refresh.svg"
+        }
+      },
+      {
+        "command": "bookmark.removeBookmark",
+        "title": "Remove Bookmark",
+        "icon": {
+          "light": "./assets/Remove.svg",
+          "dark": "./assets/Remove.svg"
+        }
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "bookmarks",
+          "title": "Bookmark",
+          "icon": "$(heart)"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "bookmark.addBookmark",
+          "group": "navigation",
+          "when": "view == bookmark"
+        },
+        {
+          "command": "bookmark.refreshEntry",
+          "group": "navigation",
+          "alt": "refresh",
+          "when": "view == bookmarks"
+        },
+        {
+          "command": "bookmark.addFiles",
+          "group": "navigation",
+          "alt": "refresh",
+          "when": "view == bookmarks"
+        },
+        {
+          "command": "bookmark.favourites",
+          "group": "navigation",
+          "alt": "refresh",
+          "when": "view == favourites"
+        }
+      ]
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "bookmarks",
+          "name": "Bookmarks",
+          "icon": "$(heart)"
+        }
+      ],
+      "bookmarks": [
+        {
+          "id": "favourites",
+          "name": "Favorites",
+          "icon": "./assets/Refresh.svg"
+        },
+        {
+          "id": "workspaceItems",
+          "name": "Workspace Items",
+          "icon": "./assets/Refresh.svg"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
